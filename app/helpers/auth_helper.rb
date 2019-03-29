@@ -10,8 +10,8 @@ module AuthHelper
     # トークンエンドポイント
     TOKEN_URL = '/oauth2/token'
   
-    # APIアクセスのスコープ設定
-    SCOPES = [ 'k:app_record:read','k:app_record:write' ] # read/write権限
+    # APIアクセスのスコープ設定 read/write権限
+    SCOPES = [ 'k:app_record:read','k:app_record:write' ]
   
     # CSRF対策のランダムな値
     STATE = 'state1'
@@ -24,7 +24,7 @@ module AuthHelper
                                   :authorize_url => AUTHORIZE_URL,
                                   :token_url => TOKEN_URL)
   
-      login_url = client.auth_code.authorize_url(:redirect_uri => authorize_url, # Railsの認可ページへのルートパス
+      login_url = client.auth_code.authorize_url( :redirect_uri => authorize_url, # Railsの認可ページへのルートパス
                                                   :scope => SCOPES.join(' '), 
                                                   :state => STATE)
     end

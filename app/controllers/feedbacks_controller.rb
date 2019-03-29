@@ -1,9 +1,11 @@
 class FeedbacksController < ApplicationController
     include AuthHelper
    
-    APP_ID = '117' # kintoenのアプリケーションID
+    # kintoenのアプリケーションID
+    APP_ID = '117'
   
-    def new # 初期ページロード状態では何もしない
+    def new
+      # 初期ページロード状態では何もしない
     end
     
     def create
@@ -48,7 +50,8 @@ class FeedbacksController < ApplicationController
     end
       
     private
-      def feedback_params　# フォームからデータを取得
+      def feedback_params
+        # フォームからデータを取得
         params.require(:feedback).permit(:received_via, :category, :tenant_name, :opinion)
       end
   end

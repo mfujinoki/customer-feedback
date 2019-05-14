@@ -29,7 +29,7 @@ module AuthHelper
                                                   :state => STATE)
     end
   
-    # トークン取得のためのコードを送信
+    # アクセストークン取得のための認可コードを送信
     def get_token_from_code(auth_code)
       client = OAuth2::Client.new(CLIENT_ID,
                                   CLIENT_SECRET,
@@ -44,7 +44,7 @@ module AuthHelper
   
     # アクセストークンの取得
     def get_access_token
-      # セッションから現在のトークンハッシュを取得
+      # セッションから現在のアクセストークンハッシュを取得
       token_hash = session[:kintone_token]
   
       client = OAuth2::Client.new(CLIENT_ID,
@@ -55,10 +55,10 @@ module AuthHelper
   
       token = OAuth2::AccessToken.from_hash(client, token_hash)
   
-      # トークンが期限切れの場合、トークンをリフレッシュ
+      # アクセストークンが期限切れの場合、リフレッシュトークンからアクセストークンを取得
       if token.expired?
         new_token = token.refresh!
-        # 新トークンをセッションへ保存
+        # 新アクセストークンをセッションへ保存
         session[:kintone_token] = new_token.to_hash
         access_token = new_token
       else

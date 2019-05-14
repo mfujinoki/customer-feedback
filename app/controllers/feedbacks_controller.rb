@@ -14,7 +14,7 @@ class FeedbacksController < ApplicationController
         token = get_access_token
   
         if token
-          # トークンがすでに取得されている場合、データをkintoneへポスト
+          # アクセストークンがすでに取得されている場合、データをkintoneへポスト
           
           # ハッシュ形式でレコードを設定
           # 
@@ -40,7 +40,7 @@ class FeedbacksController < ApplicationController
           
           redirect_to feedbacks_url
         else
-          # トークンが存在しない場合、ホームページへ戻理、承認のやり直し
+          # アクセストークンが存在しない場合、ホームページへ戻り、承認のやり直し
           # 
           redirect_to root_url
         end

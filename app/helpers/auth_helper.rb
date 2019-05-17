@@ -1,4 +1,6 @@
 module AuthHelper
+  require 'securerandom'
+
     # kintone側のOAuth設定のクライアントID
     CLIENT_ID = 'l.1.6yj9tvyxuue0iclewfa3gp3thug4zjrm'
     # kintone側のOAuth設定のクライアントシークレット
@@ -14,7 +16,7 @@ module AuthHelper
     SCOPES = [ 'k:app_record:read','k:app_record:write' ]
   
     # CSRF対策のランダムな値
-    STATE = 'state1'
+    STATE = SecureRandom.alphanumeric
   
     # ログインURLの生成
     def get_login_url

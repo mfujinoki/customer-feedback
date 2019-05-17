@@ -1,5 +1,4 @@
 module AuthHelper
-  require 'securerandom'
 
     # kintone側のOAuth設定のクライアントID
     CLIENT_ID = 'l.1.6yj9tvyxuue0iclewfa3gp3thug4zjrm'
